@@ -5,5 +5,5 @@
 <br/>
 
 <h3>architecture logiciel</h3>
-<img src="_captures"
+<img src="_captures/arch-logiciel.png"></img>
 
