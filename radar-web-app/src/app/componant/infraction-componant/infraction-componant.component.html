@@ -1,0 +1,143 @@
+
+<!--<div class="card">
+  <p-table [value]="infractions" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+
+        <p-button icon="pi pi-refresh"></p-button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Infraction Id</th>
+        <th>Propriétaire</th>
+        <th>Matricule</th>
+        <th>Radar ID</th>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-infraction>
+      <tr>
+        <td>{{infraction.id}}</td>
+        <td>{{infraction.vehicule.proprietaire.nom}}</td>
+        <td>{{infraction.vehicule.numeroMatricule }}</td>
+        <td>{{infraction.montant}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        en totale il ya {{infractions ? infractions.length : 0 }} infractions.
+      </div>
+    </ng-template>
+  </p-table>
+</div>-->
+
+<p-table
+  [value]="infractions"
+  [paginator]="true"
+  [rows]="5"
+  [showCurrentPageReport]="true"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[5, 10, 20]"
+>
+
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      <h5 class="m-0">Gestion des Infractions</h5>
+      <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+    </span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:25%">Infraction Id</th>
+      <th style="width:25%">Propriétaire</th>
+      <th style="width:25%">Matricule</th>
+      <th style="width:25%">Montant</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-infraction>
+    <tr>
+      <td>{{infraction.id}}</td>
+      <td><a (click)="getP(infraction.vehicule.proprietaire)">{{infraction.vehicule.proprietaire.nom}}</a></td>
+      <td><a (click)="getV(infraction.vehicule)">{{infraction.vehicule.numeroMatricule }}</a></td>
+      <td>{{infraction.montant}}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="paginatorleft">
+    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+  </ng-template>
+  <ng-template pTemplate="paginatorright">
+    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-table>
+
+
+<p-dialog [(visible)]="visible" [style]="{ width: '900px' }" header="Détaille des Véhivules" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <div class="card">
+      <p-table [value]="vehicule" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Marque</th>
+            <th>Matricule</th>
+            <th>Puissance</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.marque }}</td>
+            <td>{{ product.numeroMatricule }}</td>
+            <td>{{ product.puissanceFiscale }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="fermer" icon="pi pi-times" class="p-button-text" (click)="visible=false"></button>
+  </ng-template>
+
+</p-dialog>
+
+<p-dialog [(visible)]="visible2" [style]="{ width: '900px' }" header="Détaille des Propriétaire" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <div class="card">
+      <p-table [value]="proprietaire" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Email</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.nom }}</td>
+            <td>{{ product.dateNaissance }}</td>
+            <td>{{ product.email }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="fermer" icon="pi pi-times" class="p-button-text" (click)="visible2=false"></button>
+  </ng-template>
+
+</p-dialog>
+
+<router-outlet>
+
+</router-outlet>

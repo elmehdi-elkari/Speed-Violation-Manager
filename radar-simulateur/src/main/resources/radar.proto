@@ -1,0 +1,12 @@
+syntax ="proto3";
+option java_package = "ma.enset.stub";
+service sendInfraction {
+  rpc send(Empty) returns (stream infractionInfo);
+}
+
+message infractionInfo{
+  string matricule=1;
+  float vitesse=2;
+}
+
+message Empty{}

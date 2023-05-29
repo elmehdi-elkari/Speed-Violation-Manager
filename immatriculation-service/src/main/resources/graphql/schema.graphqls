@@ -1,0 +1,29 @@
+type Query {
+    proprietaireList : [ProprietaireRespense],
+    proprietaireById(id:String):ProprietaireRespense
+}
+
+type Mutation{
+    saveProprietaire(prprietaire:PropritaireRequest):ProprietaireRespense,
+    updateProprietaire(proprietaire:PropritaireRequest, id:Int):ProprietaireRespense,
+    deleteProprietaire(id:String):String
+}
+
+type ProprietaireRespense{
+    id : Int,
+    nom : String,
+    dateNaissance : String,
+    vehiculeList : [VehiculeRespense]
+}
+
+input PropritaireRequest{
+    id : Int,
+    nom : String,
+    dateNaissance : String
+}
+
+type VehiculeRespense{
+    id: Int,
+    numeroMatricule:String,
+    marque:String
+}

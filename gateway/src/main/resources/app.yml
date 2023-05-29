@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: r1
+          uri: lb:GATEWAY-SERVICE
+          predicates:
+            - Path= /infractions/**
+        - id: r2
+          uri: lb:RADAR-SERVICE
+          predicates:
+            - Path= /radars/**
+

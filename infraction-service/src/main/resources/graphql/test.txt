@@ -1,0 +1,32 @@
+mutation{
+  addAcount(newAccount:{
+    type:"SAVING_ACCOUNT",
+    balance:4000,
+    currency:"USD"
+  }) {
+    id,type
+  }
+}
+
+query{
+  accountById(id:"19") {
+    id, currency
+  }
+}
+
+mutation{
+  deleteAccount(id:"2")
+}
+
+mutation{
+  updateAccount(
+    id:"1",
+    oldAccount:{
+      type:"SAVING_ACCOUNT",
+    	balance:4000,
+    	currency:"MAD-hhh"
+    }
+  ){
+    id,type,balance,currency
+  }
+}
