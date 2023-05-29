@@ -17,7 +17,7 @@ L'interface Propriétaire permet aux l'administrateur d'effectuer différentes a
 <h5>ِConsulter l'ensembles des propriétaires</h5>
 <img src="_captures/1-prop.jpg"></img> 
 <h5>Ajouter ou modifier un propriétaire</h5> 
-<img src="_captures/1.2-ajouter-modifier.jpg"></img>
+<img src="_captures/1.2-ajouter-modivier.jpg"></img>
 <h5>Supprimer un propriétaire</h5>
 <img src="_captures/1.2-supprimer.jpg"></img>
 <h5>Voir les véhicules d'un propriétaire</h5> 
